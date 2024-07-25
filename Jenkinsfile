@@ -7,7 +7,7 @@ pipeline {
 
         SONARQUBE_SERVER = 'SonarQube'
 				SONAR_HOST_URL = 'https://sonarqube.flexsolution.xyz'
-				SONARQUBE_TOKEN = env.SONARQUBE_TOKEN
+				SONARQUBE_TOKEN = credentials('153d949b-837d-41c1-a501-50ebc5b60253')
     }
 
     stages {
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Realiza el análisis de SonarQube
-                    def scannerHome = tool 'Sonarqube' // Nombre de la herramienta SonarQube Scanner configurada en Jenkins
+                    def scannerHome = tool 'SonarQube' // Nombre de la herramienta SonarQube Scanner configurada en Jenkins
                     withSonarQubeEnv(SONARQUBE_SERVER) {
                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=spring-boot-complete -Dsonar.sources=. -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONARQUBE_TOKEN"
                     }
