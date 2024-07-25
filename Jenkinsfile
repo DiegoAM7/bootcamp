@@ -1,13 +1,17 @@
 pipeline {
     agent any
+
+	tools {
+    	maven 'Maven'
+	}
     
     environment {
         // Define environment variables
         REGISTRY = "registry.hub.docker.com" // e.g., Docker Hub or any other registry
 
         SONARQUBE_SERVER = 'SonarQube'
-				SONAR_HOST_URL = 'https://sonarqube.flexsolution.xyz'
-				SONARQUBE_TOKEN = credentials('153d949b-837d-41c1-a501-50ebc5b60253')
+		SONAR_HOST_URL = 'https://sonarqube.flexsolution.xyz'
+		SONARQUBE_TOKEN = credentials('153d949b-837d-41c1-a501-50ebc5b60253')
     }
 
     stages {
