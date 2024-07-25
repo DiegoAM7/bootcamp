@@ -9,7 +9,7 @@ pipeline {
         // Define environment variables
         REGISTRY = "registry.hub.docker.com" // e.g., Docker Hub or any other registry
 
-        SONARQUBE_SERVER = 'SonarQube'
+        SONARQUBE_SERVER = 'sonarqube'
 		SONAR_HOST_URL = 'https://sonarqube.flexsolution.xyz'
 		SONARQUBE_TOKEN = credentials('SonarQube')
     }
@@ -37,7 +37,7 @@ pipeline {
                 script {
                     // Realiza el análisis de SonarQube
                     def scannerHome = tool 'sonarqube' // Nombre de la herramienta SonarQube Scanner configurada en Jenkins
-                    withSonarQubeEnv(SONARQUBE_SERVER) {
+                    withSonarQubeEnv($SONARQUBE_SERVER) {
                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=spring-boot-complete -Dsonar.sources=. -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONARQUBE_TOKEN"
                     }
                 }
