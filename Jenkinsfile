@@ -11,7 +11,7 @@ pipeline {
 
         SONARQUBE_SERVER = 'SonarQube'
 		SONAR_HOST_URL = 'https://sonarqube.flexsolution.xyz'
-		SONARQUBE_TOKEN = credentials('153d949b-837d-41c1-a501-50ebc5b60253')
+		SONARQUBE_TOKEN = credentials('SonarQube')
     }
 
     stages {
