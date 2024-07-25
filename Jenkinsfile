@@ -37,7 +37,7 @@ pipeline {
                     // Realiza el análisis de SonarQube
                     def scannerHome = tool 'sonarqube' // Nombre de la herramienta SonarQube Scanner configurada en Jenkins
                     withSonarQubeEnv('sonarqube') {
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=spring-boot-complete -Dsonar.sources=. -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONARQUBE_TOKEN -Dsonar.java.binaries=./target/classes"
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=spring-boot-complete -Dsonar.sources=. -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.token=$SONARQUBE_TOKEN -Dsonar.java.binaries=target/classes"
                     }
                 }
             }
