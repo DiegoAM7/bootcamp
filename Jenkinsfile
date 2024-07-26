@@ -20,11 +20,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/DiegoAM7/bootcamp'
             }
         }
-	stage('Test Maven') {
-		steps {
-			sh 'mvn --version'
-		}
-	}
         stage('Build') {
             steps {
                 // Construye el proyecto Maven
